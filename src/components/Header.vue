@@ -48,7 +48,7 @@ import bus from './bus'
 export default {
   data() {
     return {
-      collapse: true,
+      collapse: false,
       fullscreen: false,
       message: 2,
       defualt_name:'nobody'
@@ -61,7 +61,7 @@ export default {
     }
   },
   create(){
-    bus.$emit('collapse',true)
+    bus.$emit('collapse',false)
   },
   components: {}
 };

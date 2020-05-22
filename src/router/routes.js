@@ -72,5 +72,9 @@ export default [
     {
         path: '*',
         component: () => import( /* webpackChunkName: "error" */ '../pages/Error.vue')
+    },
+    {
+        path:'/login',
+        component: () => import( /* webpackChunkName: "login" */ '../pages/Login.vue')
     }
 ]

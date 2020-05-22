@@ -1,20 +1,25 @@
 <template>
-  <div id="app">
-    <router-view></router-view>
+  <div>
+      <h1>this is I18n</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: "App",
+  data () {
+    return {
+
+    }
+  },
+  methods: {
+
+  },
   components: {
-    
+
   }
-};
+}
 </script>
 
 <style scoped>
-  .container{
-    margin-left: 250px;
-  }
+
 </style>

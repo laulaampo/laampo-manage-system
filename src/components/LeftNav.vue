@@ -50,7 +50,7 @@ export default {
       items: [
         {
           icon: "el-icon-s-home",
-          index: "home",
+          index: "/",
           title: "系统首页"
         },
         {

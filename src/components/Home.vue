@@ -3,6 +3,7 @@
     <Header />
     <LeftNav />
     <div class="content-box" :class="{'nav-collapse':isCollapse}">
+    <Tags />
       <router-view></router-view>
     </div>
     <el-backtop target=".wrapper"></el-backtop>
@@ -13,6 +14,7 @@
 import bus from './bus'
 import Header from './Header'
 import LeftNav from './LeftNav'
+import Tags from './Tags'
 export default {
   data () {
     return {
@@ -24,7 +26,8 @@ export default {
   },
   components: {
     Header,
-    LeftNav
+    LeftNav,
+    Tags
   },
   created(){
     bus.$on("collapse", msg => {
@@ -37,12 +40,12 @@ export default {
 <style scoped>
   .content-box{
     position: absolute;
-    left: 250px;
+    left: 241px;
     top: 80px;
     right: 0;
     bottom: 0;
-    padding-bottom: 30px;
     transition: left .3s linear;
+    padding-bottom: 30px;
   }
   .nav-collapse{
     left:65px;

@@ -9,7 +9,7 @@
       unique-opened
       menu-trigger="click"
       router
-      default-active="home"
+      :default-active="selectPath"
     >
       <template v-for="item in items">
         <template v-if="item.subs">
@@ -46,11 +46,12 @@ import bus from "./bus";
 export default {
   data() {
     return {
+      selectPath: null,
       collapse: null,
       items: [
         {
           icon: "el-icon-s-home",
-          index: "/",
+          index: "dashboard",
           title: "系统首页"
         },
         {
@@ -151,6 +152,9 @@ export default {
     bus.$on("collapse", msg => {
       this.collapse = msg;
     });
+    // 根据路径 设置默认选中的框
+    const { path } = this.$route;
+    this.selectPath = path.slice(1);
   }
 };
 </script>

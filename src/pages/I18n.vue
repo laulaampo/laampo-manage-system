@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h1>this is I18n</h1>
+    <h1>this is I18n</h1>
   </div>
 </template>
 

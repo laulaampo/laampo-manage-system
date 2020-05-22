@@ -5,7 +5,7 @@
         <i v-show="!collapse" class="el-icon-s-fold"></i>
         <i v-show="collapse" class="el-icon-s-unfold"></i>
       </div>
-      <div class="logo">神の后台管理系统</div>
+      <div class="logo">后台管理系统</div>
     </div>
     <div class="header_right">
       <!-- 全屏 -->
@@ -26,17 +26,18 @@
       <!-- 头像 -->
       <img src="../assets/img/header-doge.jpg" alt="header" />
       <!-- 用户名 -->
-      <p>刘岚坡</p>
-      <el-dropdown class="user-name" trigger="click" >
+      <p>你好，{{username}}</p>
+      <el-dropdown class="user-name" trigger="click">
         <span class="el-dropdown-link">
-          llp
           <i class="el-icon-caret-bottom"></i>
         </span>
         <el-dropdown-menu slot="dropdown">
           <a href="https://github.com/laulaampo" target="_blank">
             <el-dropdown-item>我的GitHub</el-dropdown-item>
           </a>
-          <el-dropdown-item divided command="loginout">退出登录</el-dropdown-item>
+          <span @click="logout">
+            <el-dropdown-item divided command="loginout">退出登录</el-dropdown-item>
+          </span>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
@@ -44,24 +45,34 @@
 </template>
 
 <script>
-import bus from './bus'
+import bus from "./bus";
 export default {
   data() {
     return {
       collapse: false,
       fullscreen: false,
       message: 2,
-      defualt_name:'nobody'
+      username: "undefind",
+      defualt_name: "nobody"
     };
   },
   methods: {
     collapseChage() {
       this.collapse = !this.collapse;
-      bus.$emit('collapse',this.collapse)
+      bus.$emit("collapse", this.collapse);
+    },
+    logout() {
+      localStorage.removeItem("ms_username");
+      this.$router.push("/login");
+      this.$message({
+          showClose: true,
+          message: '已退出登录'
+        });
     }
   },
-  create(){
-    bus.$emit('collapse',false)
+  created() {
+    this.username = localStorage.getItem("ms_username");
+    bus.$emit("collapse", false);
   },
   components: {}
 };
@@ -100,7 +111,7 @@ img,
 p {
   text-align: center;
   display: inline-block;
-  vertical-align:middle;
+  vertical-align: middle;
   margin: 0 9px;
 }
 .header_right div i {

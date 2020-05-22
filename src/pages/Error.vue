@@ -31,7 +31,6 @@ export default {
 }
 .wrapper .content{
   flex-direction: column;
-  /* justify-content: ; */
 }
 .content div,p{
   margin-bottom: 30px;

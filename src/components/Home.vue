@@ -47,6 +47,7 @@ export default {
   height: calc(100% - 110px);
   width: auto;
   background: #f0f0f0;
+  overflow-y: scroll;
 }
 .nav-collapse {
   left: 65px;

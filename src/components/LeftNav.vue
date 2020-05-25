@@ -9,7 +9,7 @@
       unique-opened
       menu-trigger="click"
       router
-      :default-active="selectPath"
+      :default-active="onRouteChange"
     >
       <template v-for="item in items">
         <template v-if="item.subs">
@@ -46,7 +46,6 @@ import bus from "./bus";
 export default {
   data() {
     return {
-      selectPath: null,
       collapse: null,
       items: [
         {
@@ -110,11 +109,11 @@ export default {
           subs: [
             {
               index: "drag",
-              title: "拖拽列表"
+              title: "拖拽弹框"
             },
             {
               index: "dialog",
-              title: "拖拽弹框"
+              title: "拖拽列表"
             }
           ]
         },
@@ -147,15 +146,19 @@ export default {
     };
   },
   methods: {},
+  computed:{
+    onRouteChange(){
+      return this.$route.path.replace('/','')
+    }
+  },
   components: {},
   created() {
     bus.$on("collapse", msg => {
       this.collapse = msg;
     });
     // 根据路径 设置默认选中的框
-    const { path } = this.$route;
-    this.selectPath = path.slice(1);
-  }
+  },
+  
 };
 </script>
 

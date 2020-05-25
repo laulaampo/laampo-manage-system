@@ -48,6 +48,7 @@ export default {
   width: auto;
   background: #f0f0f0;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 .nav-collapse {
   left: 65px;

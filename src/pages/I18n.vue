@@ -23,6 +23,7 @@
           <a
             place="action"
             href="https://element.eleme.cn/2.0/#/zh-CN/component/i18n"
+            target="blank"
           >{{ $t('i18n.value') }}</a>
         </i18n>
       </div>
@@ -55,5 +56,8 @@ export default {
 }
 .container h2,p{
   margin-bottom: 10px;
+}
+.container a{
+  color: #409eff;
 }
 </style>

@@ -57,17 +57,5 @@ export default {
 </script>
 
 <style scoped>
-.box {
-  width: 100%;
-  height: 100%;
-  background: #f0f0f0;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-}
-.table-card{
-  width: 800px;
-  height: 600px;
-  background: #fff;
-}
+
 </style>

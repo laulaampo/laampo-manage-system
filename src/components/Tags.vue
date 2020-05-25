@@ -1,5 +1,5 @@
 <template>
-  <div class="tags">
+  <div class="tags" v-if="tagList.length">
     <ul class="tag-list">
       <li
         class="tags-li"
@@ -116,6 +116,7 @@ export default {
   width: calc(100% - 250px);
   padding-right: 250px;
   box-shadow: 0 5px 10px #ddd;
+  margin-bottom: 10px;
 }
 .tags ul {
   box-sizing: border-box;

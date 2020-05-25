@@ -44,6 +44,9 @@ export default {
   bottom: 0;
   transition: left 0.3s linear;
   padding-bottom: 30px;
+  height: calc(100% - 110px);
+  width: auto;
+  background: #f0f0f0;
 }
 .nav-collapse {
   left: 65px;

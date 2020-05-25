@@ -9,8 +9,8 @@
     </div>
     <div class="header_right">
       <!-- 全屏 -->
-      <div>
-        <el-tooltip effect="light" :content="fullscreen?`取消全屏`:`全屏`" placement="bottom">
+      <div  @click="handleFullScreen">
+        <el-tooltip effect="light" :content="fullscreen?`取消全屏`:`全屏`" placement="bottom" >
           <i class="el-icon-rank"></i>
         </el-tooltip>
       </div>
@@ -65,9 +65,35 @@ export default {
       localStorage.removeItem("ms_username");
       this.$router.push("/login");
       this.$message({
-          showClose: true,
-          message: '已退出登录'
-        });
+        showClose: true,
+        message: "已退出登录"
+      });
+    },
+    handleFullScreen() {
+      let element = document.documentElement;
+      if (this.fullscreen) {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitCancelFullScreen) {
+          document.webkitCancelFullScreen();
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+        }
+      } else {
+        if (element.requestFullscreen) {
+          element.requestFullscreen();
+        } else if (element.webkitRequestFullScreen) {
+          element.webkitRequestFullScreen();
+        } else if (element.mozRequestFullScreen) {
+          element.mozRequestFullScreen();
+        } else if (element.msRequestFullscreen) {
+          // IE11
+          element.msRequestFullscreen();
+        }
+      }
+      this.fullscreen = !this.fullscreen;
     }
   },
   created() {

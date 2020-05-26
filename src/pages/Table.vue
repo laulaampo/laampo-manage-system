@@ -22,7 +22,13 @@
         <el-input v-model="query.name" placeholder="用户名" class="handle-input mr10"></el-input>
         <el-button type="primary" icon="el-icon-search" @click="handleSearch" class="mr10">搜索</el-button>
       </div>
-      <el-table :data="tableData" style="width: 100%" border header-cell-class-name="table-header">
+      <el-table
+        :data="tableData"
+        style="width: 100%"
+        border
+        header-cell-class-name="table-header"
+        @selection-change="handleSelectionChange"
+      >
         <el-table-column type="selection" width="55" align="center"></el-table-column>
         <el-table-column prop="date" label="ID" width="180" align="center"></el-table-column>
         <el-table-column prop="name" label="用户名" width="180" align="center"></el-table-column>
@@ -36,6 +42,7 @@
             ></el-image>
           </template>
         </el-table-column>
+        <el-table-column prop="address" label="地址" align="center"></el-table-column>
         <el-table-column prop="state" label="状态" align="center">
           <template slot-scope="scope">
             <el-tag
@@ -118,12 +125,39 @@ export default {
           this.tableData.splice(index, 1);
         })
         .catch(err => {
-          console.log(err,row);
+          console.log(err, row);
         });
     },
-    delAllSelection() {},
-    handleSearch() {},
-    saveEdit() {}
+    delAllSelection() {
+      let str = "";
+      let delIdArr = [];
+      const length = this.multipleSelection.length;
+      this.delList = this.delList.concat(this.multipleSelection);
+      for (let i = 0; i < length; i++) {
+        str += this.multipleSelection[i].name;
+      }
+      this.multipleSelection.forEach(item => {
+        delIdArr.push(item.id);
+      });
+
+      this.tableData = this.tableData.filter(item => {
+        if (delIdArr.indexOf(item.id) === -1) return item;
+      });
+
+      this.$message.error(`删除了${str}`);
+      this.multipleSelection = [];
+    },
+    handleSearch() {
+      console.log("Search");
+    },
+    handleSelectionChange(val) {
+      this.multipleSelection = val;
+    },
+    saveEdit() {
+      this.editVisible = false;
+      this.$message.success(`修改第 ${this.idx + 1} 行成功`);
+      this.$set(this.tableData, this.idx, this.form);
+    }
   },
   created() {
     this.tableData = [
@@ -172,6 +206,8 @@ export default {
 .content {
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
+  padding: 15px;
 }
 .table-card {
   width: 98%;

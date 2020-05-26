@@ -4,7 +4,11 @@
     <LeftNav />
     <div class="content-box" :class="{'nav-collapse':isCollapse}">
       <Tags />
-      <router-view></router-view>
+      <transition name="move" mode="out-in">
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
+      </transition>
     </div>
     <el-backtop target=".wrapper"></el-backtop>
   </div>
@@ -18,7 +22,8 @@ import Tags from "./Tags";
 export default {
   data() {
     return {
-      isCollapse: false
+      isCollapse: false,
+      tagList:[]
     };
   },
   methods: {},
@@ -31,6 +36,11 @@ export default {
     bus.$on("collapse", msg => {
       this.isCollapse = msg;
     });
+    bus.$on('tag-list',(msg)=>{
+      msg.forEach(item => this.tagList.push(item))
+      console.log(this.tagList);
+      
+    })
   }
 };
 </script>

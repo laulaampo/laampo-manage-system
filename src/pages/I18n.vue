@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="content">
     <div class="crumbs">
       <el-breadcrumb separator="/">
         <el-breadcrumb-item>
@@ -10,7 +10,10 @@
     </div>
     <div class="container">
       <span>{{$t('i18n.tips')}}</span>
-      <el-button type="primary" @click="$i18n.locale = $i18n.locale === 'zh'?'en':'zh';">{{$t('i18n.btn')}}</el-button>
+      <el-button
+        type="primary"
+        @click="$i18n.locale = $i18n.locale === 'zh'?'en':'zh';"
+      >{{$t('i18n.btn')}}</el-button>
       <div class="list">
         <h2>{{$t('i18n.title1')}}</h2>
         <p>{{$t('i18n.p1')}}</p>
@@ -42,7 +45,13 @@ export default {
 </script>
 
 <style scoped>
-.container{
+.content {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 15px;
+}
+.container {
   width: 90%;
   height: auto;
   background: #fff;
@@ -50,14 +59,15 @@ export default {
   border-radius: 10px;
   margin: 10px 0 0 10px;
 }
-.container h2{
+.container h2 {
   font-size: 28px;
   font-weight: bold;
 }
-.container h2,p{
+.container h2,
+p {
   margin-bottom: 10px;
 }
-.container a{
+.container a {
   color: #409eff;
 }
 </style>

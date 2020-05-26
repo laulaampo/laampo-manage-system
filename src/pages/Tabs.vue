@@ -116,6 +116,12 @@ export default {
 </script>
 
 <style scoped>
+.wrapper {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 15px;
+}
 .container {
   width: 98%;
   height: auto;

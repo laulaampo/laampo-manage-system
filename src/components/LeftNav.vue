@@ -138,6 +138,11 @@ export default {
           ]
         },
         {
+          icon:'el-icon-magic-stick',
+          index:"/constellation",
+          title:"星座运势"
+        },
+        {
           icon: "el-icon-milk-tea",
           index: "/thanks",
           title: "感谢作者"

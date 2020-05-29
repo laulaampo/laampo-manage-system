@@ -8,6 +8,11 @@ export default [
         component:() => import( /* webpackChunkName: "home" */ '../components/Home.vue' ),
         children: [
         {
+            path:'/constellation',
+            component:() => import( /* webpackChunkName: "order" */ '../pages/Constellation.vue'),
+            meta:{title:'星座运势'}
+        },
+        {
             path: '/thanks',
             component: () => import( /* webpackChunkName: "order" */ '../pages/Thanks.vue'),
             meta:{title:'感谢作者'}

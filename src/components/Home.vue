@@ -38,8 +38,6 @@ export default {
     });
     bus.$on('tag-list',(msg)=>{
       msg.forEach(item => this.tagList.push(item))
-      console.log(this.tagList);
-      
     })
   }
 };
